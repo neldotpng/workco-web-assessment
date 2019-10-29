@@ -8,7 +8,7 @@ const Product = ({ price, inventory, title, quantity }) => (
         Placeholder
       </div>
     ) : [
-      <div>
+      <div key="title">
         <h2 className="product__title">
           {title}
         </h2>
@@ -16,7 +16,8 @@ const Product = ({ price, inventory, title, quantity }) => (
           {inventory} remaining
         </div>
       </div>,
-      <span className="product__price">
+      <span className="product__price"
+        key="price">
         ${price}
       </span>
     ]}
