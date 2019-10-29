@@ -1,0 +1,37 @@
+.header {
+  align-items: center;
+  border-bottom: 1px solid $light-gray;
+  display: flex;
+  justify-content: space-between;
+  padding: 55px 0 35px;
+}
+
+.title {
+  font-size: 51px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.button {
+  border: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: -0.15px;
+  padding: 12px 26px;
+  text-transform: uppercase;
+  transition: background 0.1s ease-in-out;
+}
+
+.button--primary {
+  background-color: $blue;
+  color: $white;
+
+  &:not(:disabled):hover {
+    background-color: $blue-darker;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+}

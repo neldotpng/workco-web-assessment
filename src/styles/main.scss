@@ -1,5 +1,10 @@
 @import './general/reset';
 @import './general/variables';
+@import './general/common';
+
+@import './components/Cart';
+@import './components/Product';
+@import './components/ProductItem';
 
 body {
   background-color: $off-white;
@@ -8,4 +13,10 @@ body {
   font-family: $chivo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1220px;
+  padding: 0 50px;
 }

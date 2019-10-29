@@ -1,0 +1,22 @@
+.product {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product__title {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.product__price {
+  font-weight: 300;
+  line-height: 38px;
+}
+
+.product__inventory {
+  color: $gray;
+  font-family: $helvetica;
+  font-size: 13px;
+  text-transform: uppercase;
+}

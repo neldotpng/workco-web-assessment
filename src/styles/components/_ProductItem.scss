@@ -1,0 +1,20 @@
+.productItem {
+  display: flex;
+  margin: 30px 0;
+}
+
+.productItem__image {
+  max-width: 455px;
+  width: 100%;
+}
+
+.productItem__info {
+  align-items: flex-start;
+  background-color: $white;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  flex-flow: column;
+  padding: 35px 75px 40px 50px;
+  justify-content: space-between;
+  width: 100%;
+}

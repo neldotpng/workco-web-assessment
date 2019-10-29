@@ -2,17 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 
+import image from '../assets/images/chronograph.png'
+
 const ProductItem = ({ product, onAddToCartClicked }) => (
-  <div style={{ marginBottom: 20 }}>
-    <Product
-      title={product.title}
-      price={product.price}
-      inventory={product.inventory} />
-    <button
-      onClick={onAddToCartClicked}
-      disabled={product.inventory > 0 ? '' : 'disabled'}>
-      {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
-    </button>
+  <div className="productItem">
+    <img
+      className="productItem__image"
+      src={image}
+      alt=""/>
+    <div className="productItem__info">
+      <Product
+        title={product.title}
+        price={product.price}
+        inventory={product.inventory} />
+      <button
+        className="button button--primary"
+        onClick={onAddToCartClicked}
+        disabled={product.inventory > 0 ? '' : 'disabled'}>
+        Add to cart
+      </button>
+    </div>
   </div>
 )
 
