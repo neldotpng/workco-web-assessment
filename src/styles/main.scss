@@ -1,0 +1,11 @@
+@import './general/reset';
+@import './general/variables';
+
+body {
+  background-color: $off-white;
+  box-sizing: border-box;
+  color: $dark-gray;
+  font-family: $chivo;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
