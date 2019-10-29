@@ -1,20 +1,38 @@
 .productItem {
+  border-radius: 8px;
   display: flex;
   margin: 30px 0;
+  overflow: hidden;
+
+  @media screen and (max-width: $landscape) {
+    flex-flow: column;
+  }
 }
 
 .productItem__image {
   max-width: 455px;
-  width: 100%;
+  width: calc(100% / 12 * 5);
+
+  @media screen and (max-width: $landscape) {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .productItem__info {
   align-items: flex-start;
   background-color: $white;
-  border-radius: 0 8px 8px 0;
   display: flex;
   flex-flow: column;
   padding: 35px 75px 40px 50px;
   justify-content: space-between;
   width: 100%;
+
+  @media screen and (max-width: $tablet) {
+    padding: 27px 35px;
+  }
+
+  @media screen and (max-width: $landscape) {
+    padding: 20px 20px 30px;
+  }
 }

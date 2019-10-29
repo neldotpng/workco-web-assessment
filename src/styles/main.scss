@@ -6,9 +6,12 @@
 @import './components/Product';
 @import './components/ProductItem';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: $off-white;
-  box-sizing: border-box;
   color: $dark-gray;
   font-family: $chivo;
   -webkit-font-smoothing: antialiased;
@@ -19,4 +22,8 @@ body {
   margin: 0 auto;
   max-width: 1220px;
   padding: 0 50px;
+
+  @media screen and (max-width: $landscape) {
+    padding: 0 20px;
+  }
 }

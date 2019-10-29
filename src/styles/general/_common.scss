@@ -9,7 +9,15 @@
 .title {
   font-size: 51px;
   font-weight: 700;
-  letter-spacing: -1px;
+  letter-spacing: -0.02em;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 38px;
+  }
+
+  @media screen and (max-width: $landscape) {
+    font-size: 28px;
+  }
 }
 
 .button {
@@ -21,6 +29,15 @@
   padding: 12px 26px;
   text-transform: uppercase;
   transition: background 0.1s ease-in-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media screen and (max-width: $landscape) {
+    font-size: 13px;
+    padding: 8px 17px;
+  }
 }
 
 .button--primary {
@@ -32,6 +49,7 @@
   }
 
   &:disabled {
+    cursor: default;
     opacity: 0.3;
   }
 }

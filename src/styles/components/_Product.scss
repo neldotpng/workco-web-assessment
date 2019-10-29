@@ -1,22 +1,43 @@
 .product {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
   width: 100%;
 }
 
 .product__title {
   font-size: 38px;
+  letter-spacing: -0.01em;
   margin-bottom: 15px;
+
+  @media screen and (max-width: $tablet) {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: $landscape) {
+    font-size: 21px;
+  }
 }
 
 .product__price {
+  font-size: 21px;
   font-weight: 300;
   line-height: 38px;
+
+  @media screen and (max-width: $tablet) {
+    line-height: 28px;
+  }
+
+  @media screen and (max-width: $portrait) {
+    font-size: 16px;
+  }
 }
 
 .product__inventory {
   color: $gray;
   font-family: $helvetica;
-  font-size: 13px;
+  font-size: 12px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
 }
