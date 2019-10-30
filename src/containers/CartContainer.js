@@ -5,10 +5,10 @@ import { checkout } from '../actions'
 import { getTotal, getCartProducts } from '../reducers'
 import Cart from '../components/Cart'
 
-const CartContainer = ({ products, total, checkout }) => (
+const CartContainer = ({ products, subtotal, checkout }) => (
   <Cart
     products={products}
-    total={total}
+    subtotal={subtotal}
     onCheckoutClicked={() => checkout(products)} />
 )
 
@@ -19,13 +19,13 @@ CartContainer.propTypes = {
     price: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired
   })).isRequired,
-  total: PropTypes.string,
+  subtotal: PropTypes.number,
   checkout: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
   products: getCartProducts(state),
-  total: getTotal(state)
+  subtotal: getTotal(state)
 })
 
 export default connect(
