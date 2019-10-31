@@ -8,6 +8,7 @@
     "react-test-renderer": "^15.6.2"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "lodash": "^4.17.13",
     "node-sass": "^4.13.0",
     "prop-types": "^15.6.2",
