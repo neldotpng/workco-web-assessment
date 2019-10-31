@@ -4,17 +4,35 @@ import Product from './Product'
 
 import cartIcon from '../assets/icons/cart.svg'
 import xIcon from '../assets/icons/x.svg'
+import image from '../assets/images/chronograph-cart.png'
 
 const Cart  = ({ products, subtotal, onCheckoutClicked }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
-      <Product
-        title={product.title}
-        price={product.price}
-        quantity={product.quantity}
-        key={product.id}
-      />
+      <div className="cart__product">
+        <div className="cart__productInfo">
+          <img
+            className="cart__product__image"
+            src={image}
+            alt="Chronograph watch"/>
+          <Product
+            title={product.title}
+            price={product.price}
+            quantity={product.quantity}
+            key={product.id}
+          />
+        </div>
+        <div className="cart__product__quantityControls">
+          <button className="button button--secondary button--left">
+            <svg className="button__icon" width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg"><title>Remove</title><path d="M1 1h14" stroke="#8E939C" strokeWidth="2" fill="none" fillRule="evenodd" strokeLinecap="square"/></svg>
+          </button>
+          <div className="cart__product__quantity">{product.quantity}</div>
+          <button className="button button--secondary button--right">
+            <svg className="button__icon" width="16" height="15" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg"><title>Add</title><g stroke="#8E939C" strokeWidth="2" fill="none" fillRule="evenodd" strokeLinecap="square"><path d="M1.333 7.5h13.35M8 1v13"/></g></svg>
+          </button>
+        </div>
+      </div>
     )
   ) : (
     <div className="cart__empty">

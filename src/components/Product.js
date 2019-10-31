@@ -4,8 +4,19 @@ import PropTypes from 'prop-types'
 const Product = ({ price, inventory, title, quantity }) => (
   <div className="product">
     {quantity ? (
-      <div>
-        Placeholder
+      <div className="product__info">
+        <div>
+          <h2 className="product__title">
+            {title}
+          </h2>
+          <span className="product__price"
+            key="price">
+            ${price}
+          </span>
+        </div>
+        <button className="textButton textButton--remove">
+          Remove
+        </button>
       </div>
     ) : [
       <div key="title">

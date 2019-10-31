@@ -1,7 +1,6 @@
 .product {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -40,4 +39,22 @@
   font-size: 12px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
+}
+
+.product__info {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin-left: 15px;
+
+  .product__title {
+    font-size: 21px;
+    margin-bottom: 5px;
+  }
+
+  .product__price {
+    font-size: 16px;
+    line-height: 1;
+  }
 }
