@@ -9,11 +9,12 @@ import cartIcon from '../assets/icons/cart.svg'
 import xIcon from '../assets/icons/x.svg'
 import image from '../assets/images/chronograph-cart.png'
 
-const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen }) => {
+const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen, onSubFromCartClicked, onAddToCartClicked }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map((product, i) =>
-      <div className="cart__product" key={i}>
+      <div className="cart__product"
+        key={i}>
         <div className="cart__productInfo">
           <img
             className="cart__product__image"
@@ -26,7 +27,10 @@ const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen })
             key={product.id}
           />
         </div>
-        <CartQuantityControls product={product} />
+        <CartQuantityControls
+          product={product}
+          subFromCart={onSubFromCartClicked}
+          addToCart={onAddToCartClicked} />
       </div>
     )
   ) : (
@@ -92,7 +96,8 @@ Cart.propTypes = {
   subtotal: PropTypes.number,
   onCheckoutClicked: PropTypes.func,
   isCartOpen: PropTypes.bool,
-  toggleCart: PropTypes.func
+  toggleCart: PropTypes.func,
+  subFromCart: PropTypes.func
 }
 
 export default Cart

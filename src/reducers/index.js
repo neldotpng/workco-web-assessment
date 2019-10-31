@@ -9,8 +9,8 @@ export default combineReducers({
 
 const getAddedIds = state => fromCart.getAddedIds(state.cart)
 const getQuantity = (state, id) => fromCart.getQuantity(state.cart, id)
-const getProduct = (state, id) => fromProducts.getProduct(state.products, id)
 const getIsCartOpen = (state) => fromCart.getIsCartOpen(state.cart)
+const getProduct = (state, id) => fromProducts.getProduct(state.products, id)
 
 export const getTotal = state =>
   parseFloat(getAddedIds(state)

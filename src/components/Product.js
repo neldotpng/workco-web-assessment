@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Product = ({ price, inventory, title, quantity }) => (
   <div className="product">
-    {quantity ? (
+    {quantity > 0 ? (
       <div className="product__info">
         <div>
           <h2 className="product__title">{title}</h2>

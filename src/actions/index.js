@@ -40,3 +40,14 @@ export const checkout = products => (dispatch, getState) => {
 export const toggleCart = () => dispatch => {
   dispatch({ type: types.TOGGLE_CART })
 }
+
+const subFromCartUnsafe = product => ({
+  type: types.SUB_FROM_CART,
+  product
+})
+
+export const subFromCart = product => (dispatch, getState) => {
+  if (getState().cart.quantityById[product.id] > 0) {
+    dispatch(subFromCartUnsafe(product))
+  }
+}
