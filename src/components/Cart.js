@@ -14,8 +14,8 @@ import image from '../assets/images/chronograph-cart.png'
 const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
-    products.map(product =>
-      <div className="cart__product">
+    products.map((product, i) =>
+      <div className="cart__product" key={i}>
         <div className="cart__productInfo">
           <img
             className="cart__product__image"
@@ -65,34 +65,37 @@ const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen })
         <div className="cart__section cart__products">
           {nodes}
         </div>
-        {subtotal > 0 && [
-          <div className="cart__section"
-            key="subtotal">
-            <div className="cart__line">
-              <div>Subtotal</div>
-              <div className="cart__price">&#36;{subtotal.toFixed(2)}</div>
+        {subtotal > 0 && (
+          <div className="cart__info">
+            <div className="cart__section">
+              <div className="cart__line">
+                <div>Subtotal</div>
+                <div className="cart__price">&#36;{subtotal.toFixed(2)}</div>
+              </div>
+              <div className="cart__line">
+                <div>Taxes</div>
+                <div className="cart__price">&#36;{taxes.toFixed(2)}</div>
+              </div>
             </div>
-            <div className="cart__line">
-              <div>Taxes</div>
-              <div className="cart__price">&#36;{taxes.toFixed(2)}</div>
+            <div className="cart__section">
+              <div className="cart__line">
+                <div>Total</div>
+                <div className="cart__price">&#36;{total.toFixed(2)}</div>
+              </div>
             </div>
-          </div>,
-          <div className="cart__section"
-            key="total">
-            <div className="cart__line">
-              <div>Total</div>
-              <div className="cart__price">&#36;{total.toFixed(2)}</div>
+            <div className="cart__update">
+              <button className="button button--outline">Update</button>
             </div>
-          </div>,
-          <div className="cart__checkout">
-            <button className="button button--primary"
-              onClick={onCheckoutClicked}
-              disabled={hasProducts ? '' : 'disabled'}
-              key="checkout">
-              Checkout
-            </button>
+            <div className="cart__checkout">
+              <button className="button button--primary"
+                onClick={onCheckoutClicked}
+                disabled={hasProducts ? '' : 'disabled'}
+                key="checkout">
+                Checkout
+              </button>
+            </div>
           </div>
-        ]}
+        )}
       </div>
     </div>
   )
