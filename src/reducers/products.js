@@ -28,21 +28,17 @@ const byId = (state = {}, action) => {
           return obj
         }, {})
       }
-    case SUB_FROM_CART:
-      const { product } = action
-      if (product.id) {
-        return {
-          ...state,
-          [product.id]: products(state[product.id], action)
-        }
-      }
-      return state
     default:
-      const { productId } = action
+      const { productId, product } = action
       if (productId) {
         return {
           ...state,
           [productId]: products(state[productId], action)
+        }
+      } else if (product) {
+        return {
+          ...state,
+          [product.id]: products(state[product.id], action)
         }
       }
       return state
