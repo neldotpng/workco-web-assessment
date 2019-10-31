@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import cx from 'classnames'
 
 import Product from './Product'
+import CartQuantityControls from './CartQuantityControls'
 import { isCartOpen } from '../reducers'
 import { toggleCart } from '../actions'
 
@@ -28,15 +29,7 @@ const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen })
             key={product.id}
           />
         </div>
-        <div className="cart__product__quantityControls">
-          <button className="button button--secondary button--left">
-            <svg className="button__icon" width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg"><title>Remove</title><path d="M1 1h14" stroke="#8E939C" strokeWidth="2" fill="none" fillRule="evenodd" strokeLinecap="square"/></svg>
-          </button>
-          <div className="cart__product__quantity">{product.quantity}</div>
-          <button className="button button--secondary button--right">
-            <svg className="button__icon" width="16" height="15" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg"><title>Add</title><g stroke="#8E939C" strokeWidth="2" fill="none" fillRule="evenodd" strokeLinecap="square"><path d="M1.333 7.5h13.35M8 1v13"/></g></svg>
-          </button>
-        </div>
+        <CartQuantityControls product={product} />
       </div>
     )
   ) : (
@@ -59,12 +52,8 @@ const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen })
           onClick={toggleCart}>
           <img src={xIcon} alt="X icon"/>
         </div>
-        <h3 className="cart__header">
-          Your cart
-        </h3>
-        <div className="cart__section cart__products">
-          {nodes}
-        </div>
+        <h3 className="cart__header">Your cart</h3>
+        <div className="cart__section cart__products">{nodes}</div>
         {subtotal > 0 && (
           <div className="cart__info">
             <div className="cart__section">

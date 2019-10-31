@@ -6,26 +6,18 @@ const Product = ({ price, inventory, title, quantity }) => (
     {quantity ? (
       <div className="product__info">
         <div>
-          <h2 className="product__title">
-            {title}
-          </h2>
+          <h2 className="product__title">{title}</h2>
           <span className="product__price"
             key="price">
             ${price}
           </span>
         </div>
-        <button className="textButton textButton--remove">
-          Remove
-        </button>
+        <button className="textButton textButton--remove">Remove</button>
       </div>
     ) : [
       <div key="title">
-        <h2 className="product__title">
-          {title}
-        </h2>
-        <div className="product__inventory">
-          {inventory} remaining
-        </div>
+        <h2 className="product__title">{title}</h2>
+        <div className="product__inventory">{inventory} remaining</div>
       </div>,
       <span className="product__price"
         key="price">
