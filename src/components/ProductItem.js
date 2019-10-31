@@ -20,7 +20,7 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
         price={product.price}
         inventory={product.inventory} />
       <button
-        className="productItem__add button button--primary"
+        className="productItem__add button button--primary button--shrink"
         onClick={onAddToCartClicked}
         disabled={product.inventory > 0 ? '' : 'disabled'}>
         Add to cart
