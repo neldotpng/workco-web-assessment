@@ -1,12 +1,13 @@
 import React from 'react'
 import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
+import CartButton from '../components/CartButton'
 
 const App = () => (
   <div className="container">
     <header className="header">
       <h1 className="title">Acme Store</h1>
-      <div>Your cart is empty</div>
+      <CartButton />
     </header>
     <ProductsContainer />
     <CartContainer />

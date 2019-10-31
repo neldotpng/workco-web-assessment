@@ -36,3 +36,7 @@ export const checkout = products => (dispatch, getState) => {
     })
   })
 }
+
+export const toggleCart = () => dispatch => {
+  dispatch({ type: types.TOGGLE_CART })
+}

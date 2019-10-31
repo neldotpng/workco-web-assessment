@@ -1,12 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import cx from 'classnames'
+
 import Product from './Product'
+import { isCartOpen } from '../reducers'
+import { toggleCart } from '../actions'
 
 import cartIcon from '../assets/icons/cart.svg'
 import xIcon from '../assets/icons/x.svg'
 import image from '../assets/images/chronograph-cart.png'
 
-const Cart  = ({ products, subtotal, onCheckoutClicked }) => {
+const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
@@ -41,13 +46,17 @@ const Cart  = ({ products, subtotal, onCheckoutClicked }) => {
     </div>
   )
 
-  const taxes = Math.round(subtotal * 0.08067 * 100) / 100
+  const taxes = Math.round(subtotal * 0.08125 * 100) / 100
   const total = subtotal + taxes
+  const cxContainer = cx('cart__container', {
+    'is-open': isCartOpen
+  })
 
   return (
-    <div className="cart__container">
+    <div className={cxContainer}>
       <div className="cart">
-        <div className="cart__close">
+        <div className="cart__close"
+          onClick={toggleCart}>
           <img src={xIcon} alt="X icon"/>
         </div>
         <h3 className="cart__header">
@@ -92,7 +101,16 @@ const Cart  = ({ products, subtotal, onCheckoutClicked }) => {
 Cart.propTypes = {
   products: PropTypes.array,
   subtotal: PropTypes.number,
-  onCheckoutClicked: PropTypes.func
+  onCheckoutClicked: PropTypes.func,
+  isCartOpen: PropTypes.bool,
+  toggleCart: PropTypes.func
 }
 
-export default Cart
+const mapStateToProps = (state) => ({
+  isCartOpen: isCartOpen(state),
+})
+
+export default connect(
+  mapStateToProps,
+  { toggleCart }
+)(Cart)
