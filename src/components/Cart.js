@@ -1,12 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import cx from 'classnames'
 
 import Product from './Product'
 import CartQuantityControls from './CartQuantityControls'
-import { isCartOpen } from '../reducers'
-import { toggleCart } from '../actions'
 
 import cartIcon from '../assets/icons/cart.svg'
 import xIcon from '../assets/icons/x.svg'
@@ -98,11 +95,4 @@ Cart.propTypes = {
   toggleCart: PropTypes.func
 }
 
-const mapStateToProps = (state) => ({
-  isCartOpen: isCartOpen(state),
-})
-
-export default connect(
-  mapStateToProps,
-  { toggleCart }
-)(Cart)
+export default Cart

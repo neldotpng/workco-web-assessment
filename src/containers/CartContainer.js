@@ -1,15 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { checkout } from '../actions'
-import { getTotal, getCartProducts } from '../reducers'
+import { checkout, toggleCart } from '../actions'
+import { getTotal, getCartProducts, isCartOpen } from '../reducers'
 import Cart from '../components/Cart'
 
-const CartContainer = ({ products, subtotal, checkout }) => (
+const CartContainer = ({ products, subtotal, checkout, toggleCart, isCartOpen }) => (
   <Cart
     products={products}
     subtotal={subtotal}
-    onCheckoutClicked={() => checkout(products)} />
+    onCheckoutClicked={() => checkout(products)}
+    toggleCart={toggleCart}
+    isCartOpen={isCartOpen} />
 )
 
 CartContainer.propTypes = {
@@ -20,15 +22,18 @@ CartContainer.propTypes = {
     quantity: PropTypes.number.isRequired
   })).isRequired,
   subtotal: PropTypes.number,
-  checkout: PropTypes.func.isRequired
+  checkout: PropTypes.func.isRequired,
+  toggleCart: PropTypes.func.isRequired,
+  isCartOpen: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => ({
   products: getCartProducts(state),
-  subtotal: getTotal(state)
+  subtotal: getTotal(state),
+  isCartOpen: isCartOpen(state)
 })
 
 export default connect(
   mapStateToProps,
-  { checkout }
+  { checkout, toggleCart }
 )(CartContainer)
