@@ -29,8 +29,11 @@ const CartQuantityControls = ({ product, subFromCart, addToCart }) => {
 
 CartQuantityControls.propTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    productTitle: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      currency: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired,
     inventory: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired
   }).isRequired

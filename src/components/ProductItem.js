@@ -16,8 +16,8 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
       alt="Chronograph watch"/>
     <div className="productItem__info">
       <Product
-        title={product.title}
-        price={product.price}
+        title={product.productTitle}
+        price={product.price.value}
         inventory={product.inventory} />
       <button
         className="productItem__add button button--primary button--shrink"
@@ -31,8 +31,11 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
 
 ProductItem.propTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    productTitle: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      currency: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired,
     inventory: PropTypes.number.isRequired
   }).isRequired,
   onAddToCartClicked: PropTypes.func.isRequired

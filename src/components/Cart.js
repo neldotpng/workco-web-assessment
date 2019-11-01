@@ -21,8 +21,8 @@ const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen, o
             src={image}
             alt="Chronograph watch"/>
           <Product
-            title={product.title}
-            price={product.price}
+            title={product.productTitle}
+            price={product.price.value}
             quantity={product.quantity}
             key={product.id}
             removeFromCart={() => onRemoveFromCartClicked(product)}

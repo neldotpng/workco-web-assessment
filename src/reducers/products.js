@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_PRODUCTS, ADD_TO_CART, SUB_FROM_CART, REMOVE_FROM_CART } from '../constants/ActionTypes'
+import { FETCH_PRODUCTS_SUCCESS, ADD_TO_CART, SUB_FROM_CART, REMOVE_FROM_CART } from '../constants/ActionTypes'
 
 const products = (state, action) => {
   switch (action.type) {
@@ -25,7 +25,7 @@ const products = (state, action) => {
 
 const byId = (state = {}, action) => {
   switch (action.type) {
-    case RECEIVE_PRODUCTS:
+    case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
         ...action.products.reduce((obj, product) => {
@@ -52,7 +52,7 @@ const byId = (state = {}, action) => {
 
 const visibleIds = (state = [], action) => {
   switch (action.type) {
-    case RECEIVE_PRODUCTS:
+    case FETCH_PRODUCTS_SUCCESS:
       return action.products.map(product => product.id)
     default:
       return state

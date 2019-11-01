@@ -1,15 +1,26 @@
+import fetch from 'cross-fetch'
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
 
-const receiveProducts = products => ({
-  type: types.RECEIVE_PRODUCTS,
-  products: products
+const requestProducts = url => ({
+  type: types.FETCH_PRODUCTS_REQUEST,
+  url
 })
 
-export const getAllProducts = () => dispatch => {
-  shop.getProducts(products => {
-    dispatch(receiveProducts(products))
-  })
+const receiveProducts = (url, json) => ({
+  type: types.FETCH_PRODUCTS_SUCCESS,
+  url,
+  products: json,
+  receivedAt: Date.now()
+})
+
+export const fetchPosts = url => {
+  return dispatch => {
+    dispatch(requestProducts(url))
+    return fetch(url)
+      .then(response => response.json())
+      .then(json => dispatch(receiveProducts(url, json)))
+  }
 }
 
 const addToCartUnsafe = productId => ({

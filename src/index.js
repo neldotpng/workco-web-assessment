@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
-import { getAllProducts } from './actions'
+import { fetchPosts } from './actions'
 import App from './containers/App'
 import './styles/main.scss';
 
@@ -19,7 +19,9 @@ const store = createStore(
   applyMiddleware(...middleware)
 )
 
-store.dispatch(getAllProducts())
+const ENDPOINT = 'http://tech.work.co/shopping-cart/products.json'
+
+store.dispatch(fetchPosts(ENDPOINT))
 
 render(
   <Provider store={store}>
