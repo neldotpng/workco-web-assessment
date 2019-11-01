@@ -9,7 +9,7 @@ import cartIcon from '../assets/icons/cart.svg'
 import xIcon from '../assets/icons/x.svg'
 import image from '../assets/images/chronograph-cart.png'
 
-const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen, onSubFromCartClicked, onAddToCartClicked }) => {
+const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen, onSubFromCartClicked, onAddToCartClicked, onRemoveFromCartClicked }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map((product, i) =>
@@ -25,6 +25,7 @@ const Cart = ({ products, subtotal, onCheckoutClicked, toggleCart, isCartOpen, o
             price={product.price}
             quantity={product.quantity}
             key={product.id}
+            removeFromCart={() => onRemoveFromCartClicked(product)}
           />
         </div>
         <CartQuantityControls
@@ -97,7 +98,9 @@ Cart.propTypes = {
   onCheckoutClicked: PropTypes.func,
   isCartOpen: PropTypes.bool,
   toggleCart: PropTypes.func,
-  subFromCart: PropTypes.func
+  onSubFromCartClicked: PropTypes.func,
+  onAddToCartClicked: PropTypes.func,
+  onRemoveFromCartClicked: PropTypes.func
 }
 
 export default Cart

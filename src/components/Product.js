@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Product = ({ price, inventory, title, quantity }) => (
+const Product = ({ price, inventory, title, quantity, removeFromCart }) => (
   <div className="product">
     {quantity > 0 ? (
       <div className="product__info">
@@ -12,7 +12,10 @@ const Product = ({ price, inventory, title, quantity }) => (
             ${price}
           </span>
         </div>
-        <button className="textButton textButton--remove">Remove</button>
+        <button className="textButton textButton--remove"
+          onClick={removeFromCart}>
+          Remove
+        </button>
       </div>
     ) : [
       <div key="title">
@@ -31,7 +34,8 @@ Product.propTypes = {
   price: PropTypes.number,
   inventory: PropTypes.number,
   title: PropTypes.string,
-  quantity: PropTypes.number
+  quantity: PropTypes.number,
+  removeFromCart: PropTypes.func
 }
 
 export default Product

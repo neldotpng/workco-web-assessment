@@ -51,3 +51,14 @@ export const subFromCart = product => (dispatch, getState) => {
     dispatch(subFromCartUnsafe(product))
   }
 }
+
+const removeFromCartUnsafe = product => ({
+  type: types.REMOVE_FROM_CART,
+  product
+})
+
+export const removeFromCart = product => (dispatch, getState) => {
+  if (getState().cart.quantityById[product.id] > 0) {
+    dispatch(removeFromCartUnsafe(product))
+  }
+}
